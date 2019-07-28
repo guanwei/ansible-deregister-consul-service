@@ -1,0 +1,4 @@
+---
+consul_address: "localhost:8500"
+service_name_prefix: "service"
+service_addresses: []

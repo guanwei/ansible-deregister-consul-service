@@ -1,0 +1,9 @@
+---
+- name: Deregister consul service startwith "{{ service_name_prefix }}" of {{ service_addresses }}
+  consul:
+    host: "{{ consul_address.split(':')[0] }}"
+    port: "{{ consul_address.split(':')[1] | default(8500) }}"
+    service_name: "{{ service_name_prefix }}-{{ item | replace('.','-') }}"
+    state: absent
+  with_items: "{{ service_addresses }}"
+  delegate_to: localhost
